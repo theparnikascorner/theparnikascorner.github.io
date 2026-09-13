@@ -1,0 +1,334 @@
+<title>Parnika's Corner</title>
+<style>
+  :root{
+    --bg:#fdfbf7;
+    --surface:#ffffff;
+    --ink:#2c3138;
+    --ink-soft:#6b7280;
+    --line:#eee7dc;
+    --accent:#e8536b;
+    --accent-soft:#fbe4e8;
+    --ocean:#7fb8c9;
+    --ocean-soft:#eaf5f7;
+    --radius:18px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1b1d21;
+      --surface:#24272c;
+      --ink:#f1efe9;
+      --ink-soft:#a7acb3;
+      --line:#33363b;
+      --accent:#f0788d;
+      --accent-soft:#3a262b;
+      --ocean:#7fb8c9;
+      --ocean-soft:#20303a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1b1d21;
+    --surface:#24272c;
+    --ink:#f1efe9;
+    --ink-soft:#a7acb3;
+    --line:#33363b;
+    --accent:#f0788d;
+    --accent-soft:#3a262b;
+    --ocean:#7fb8c9;
+    --ocean-soft:#20303a;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height:1.55;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* Header */
+  header{
+    padding:28px 0 20px;
+    border-bottom:1px solid var(--line);
+  }
+  .header-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .logo-dot{
+    width:42px;height:42px;border-radius:50%;
+    background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka', 'Quicksand', sans-serif;
+    font-weight:600;font-size:20px;flex-shrink:0;
+  }
+  .brand-name{font-family:'Fredoka','Quicksand',sans-serif;font-weight:600;font-size:22px;letter-spacing:0.2px;}
+  nav{display:flex;gap:28px;font-size:15px;}
+  nav a{color:var(--ink-soft);text-decoration:none;}
+  nav a:hover{color:var(--accent);}
+
+  /* Hero */
+  .hero{
+    padding:64px 0 56px;
+    text-align:center;
+  }
+  .hero h1{
+    font-family:'Fredoka','Quicksand',sans-serif;
+    font-weight:600;
+    font-size:clamp(28px,4vw,42px);
+    margin:0 0 14px;
+    letter-spacing:0.2px;
+  }
+  .hero p{
+    color:var(--ink-soft);
+    font-size:17px;
+    max-width:520px;
+    margin:0 auto;
+  }
+
+  /* Section headings */
+  .section-title{
+    font-family:'Fredoka','Quicksand',sans-serif;
+    font-weight:600;
+    font-size:26px;
+    margin:0 0 8px;
+  }
+  .section-sub{color:var(--ink-soft);font-size:15px;margin:0 0 36px;}
+  section{padding:16px 0 64px;}
+
+  /* Book card */
+  .book-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:36px;
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  @media (max-width:680px){
+    .book-card{grid-template-columns:1fr;padding:24px;}
+  }
+  .book-cover{
+    width:100%;
+    border-radius:14px;
+    background:var(--ocean-soft);
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .book-cover img{width:100%;display:block;}
+
+  .book-info .kicker{
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    font-size:12px;
+    color:var(--accent);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .book-info h3{
+    font-family:'Fredoka','Quicksand',sans-serif;
+    font-size:24px;
+    font-weight:600;
+    margin:0 0 12px;
+  }
+  .book-info p.desc{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0 0 24px;
+    max-width:480px;
+  }
+
+  .sample-label{
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:12px;
+  }
+  .samples{
+    display:flex;
+    gap:12px;
+    margin-bottom:28px;
+    flex-wrap:wrap;
+  }
+  .sample-thumb{
+    width:88px;height:88px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:#fff;
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .sample-thumb img{width:100%;height:100%;object-fit:contain;padding:6px;}
+
+  .buy-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+  .buy-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent);
+    color:#fff;
+    text-decoration:none;
+    padding:12px 24px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:15px;
+  }
+  .buy-btn:hover{opacity:0.92;}
+  .buy-btn-secondary{
+    background:transparent;
+    color:var(--accent);
+    border:1.5px solid var(--accent);
+  }
+  .buy-note{font-size:13px;color:var(--ink-soft);}
+
+  /* Coming soon card */
+  .coming-soon{
+    margin-top:24px;
+    border:1.5px dashed var(--line);
+    border-radius:var(--radius);
+    padding:28px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:14px;
+  }
+
+  /* Reviews */
+  .reviews-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  @media (max-width:800px){
+    .reviews-grid{grid-template-columns:1fr;}
+  }
+  .review-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:24px;
+  }
+  .stars{color:var(--accent);font-size:15px;margin-bottom:10px;letter-spacing:2px;}
+  .review-text{font-size:14.5px;color:var(--ink);margin:0 0 14px;}
+  .review-name{font-size:13px;color:var(--ink-soft);font-weight:700;}
+  .placeholder-flag{
+    font-size:11px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    margin-top:10px;
+    opacity:0.6;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 0 32px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:13.5px;
+  }
+  footer a{color:var(--ink-soft);}
+  .footer-brand{
+    font-family:'Fredoka','Quicksand',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .footer-note{
+    max-width:480px;
+    margin:0 auto 8px;
+    line-height:1.6;
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand">
+      <div class="logo-dot">P</div>
+      <div class="brand-name">Parnika's Corner</div>
+    </div>
+    <nav>
+      <a href="#books">Books</a>
+      <a href="#reviews">Reviews</a>
+      <a href="mailto:theparnikascorner@gmail.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero wrap">
+  <h1>Coloring books made with love</h1>
+  <p>Hand-illustrated coloring books for kids and grown-ups alike — gentle line art, playful characters, and pages worth coming back to.</p>
+</div>
+
+<section id="books" class="wrap">
+  <h2 class="section-title">Our Books</h2>
+  <p class="section-sub">Each book comes as a full-color guide plus clean printable line-art pages.</p>
+
+  <div class="book-card">
+    <div class="book-cover">
+      <img src="images/book1-cover.png" alt="Sea Creatures: Beauties of Ocean — coloring book cover">
+    </div>
+    <div class="book-info">
+      <div class="kicker">Book One</div>
+      <h3>Sea Creatures: Beauties of Ocean</h3>
+      <p class="desc">A gentle journey under the waves — meet a jumping dolphin, a curious orca, a graceful stingray, and more. Clean, printable line art paired with full-color reference guides.</p>
+
+      <div class="sample-label">Sample pages</div>
+      <div class="samples">
+        <div class="sample-thumb"><img src="images/dolphin-line.png" alt="Dolphin line art sample"></div>
+        <div class="sample-thumb"><img src="images/orca-line.png" alt="Orca line art sample"></div>
+        <div class="sample-thumb"><img src="images/stingray-line.png" alt="Stingray line art sample"></div>
+        <div class="sample-thumb"><img src="images/orca-color.png" alt="Orca colored reference sample"></div>
+      </div>
+
+      <div class="buy-row">
+        <a class="buy-btn" href="#" target="_blank" rel="noopener">Buy on Amazon</a>
+        <span class="buy-note">Link coming soon</span>
+      </div>
+      <div class="buy-row" style="margin-top:12px;">
+        <a class="buy-btn buy-btn-secondary" href="Sea%20Creatures%20-%20Beauties%20of%20Ocean%20-%20Colored%20Guide.pdf" target="_blank" rel="noopener">Download Color Guide (PDF)</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="coming-soon">More books from Parnika's Corner are on the way — check back soon.</div>
+</section>
+
+<section id="reviews" class="wrap">
+  <h2 class="section-title">What readers say</h2>
+  <p class="section-sub">Real reviews will appear here as they come in.</p>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"A lovely coloring book — my daughter loved the dolphin page most!"</p>
+      <div class="review-name">Reader review</div>
+      <div class="placeholder-flag">Placeholder — swap with a real review</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Clean line art, thick enough paper, great for younger kids."</p>
+      <div class="review-name">Reader review</div>
+      <div class="placeholder-flag">Placeholder — swap with a real review</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Beautifully drawn. Looking forward to the next book!"</p>
+      <div class="review-name">Reader review</div>
+      <div class="placeholder-flag">Placeholder — swap with a real review</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-brand">Parnika's Corner</div>
+    <p class="footer-note">Got a question, feedback on the book, or an idea for what we should make next? Email us — we reply within 1–2 days.</p>
+    <p class="footer-note">For print quality or delivery issues, please contact Amazon customer support directly.</p>
+    <p style="margin-top:16px;">
+      <a href="mailto:theparnikascorner@gmail.com">theparnikascorner@gmail.com</a>
+    </p>
+  </div>
+</footer>
